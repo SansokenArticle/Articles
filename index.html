@@ -25,6 +25,9 @@
                 alert("認証に失敗しました。正しいメールアドレスを入力してください。");
             }
         }
+
+        // フォームの送信ボタンを押したときにvalidateEmailを実行
+        document.querySelector('form').addEventListener('submit', validateEmail);
     </script>
 </body>
 </html>
