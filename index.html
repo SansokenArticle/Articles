@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認証ページ</title>
+</head>
+<body>
+    <h2>このページは医療関係者または学生のみ閲覧可能です。</h2>
+    <p>認証のため、メールアドレスを入力してください:</p>
+    <form onsubmit="validateEmail(event)">
+        <input type="email" id="email" placeholder="example@university.ac.jp" required>
+        <button type="submit">送信</button>
+    </form>
+    <script>
+        function validateEmail(event) {
+            event.preventDefault(); // フォームが送信されるのを防ぐ
+            var email = document.getElementById("email").value;
+            var domain = email.split("@")[1]; // メールアドレスのドメイン部分を取得
+            var allowedDomains = ["tcu.ac.jp"]; // 許可されたドメイン
+
+            if (allowedDomains.includes(domain)) {
+                window.location.href = "https://www.aist.go.jp/aist_j/press_release/pr2003/pr20031022/pr20031022.html"; // 認証後のリダイレクト先
+            } else {
+                alert("認証に失敗しました。正しいメールアドレスを入力してください。");
+            }
+        }
+    </script>
+</body>
+</html>
