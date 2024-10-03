@@ -10,7 +10,7 @@
     <p>認証のため、メールアドレスを入力してください:</p>
     
     <!-- フォーム設定 -->
-    <form name="email-form" method="POST" netlify>
+    <form name="email-form" method="POST" netlify data-netlify="true">
         <label for="email">Email: <input type="email" id="email" name="email" placeholder="example@university.ac.jp" required></label>
         <button type="submit">送信</button>
     </form>
@@ -19,14 +19,12 @@
         function validateEmail(event) {
             event.preventDefault(); // フォーム送信を止める
             var email = document.getElementById("email").value;
-            var domain = email.split("@")[1];
+            var domain = email.split("@")[1]; // メールアドレスのドメインを取得
             var allowedDomains = ["tcu.ac.jp"]; // 許可されたドメインリスト
 
             if (allowedDomains.includes(domain)) {
-                // メールアドレスが許可された場合にフォームを送信
-                event.target.submit();
-
-                
+                // ドメインが正しい場合はフォームを送信してメールアドレスを回収
+                event.target.submit(); // Netlifyにメールアドレスを送信
             } else {
                 alert("認証に失敗しました。正しいメールアドレスを入力してください。");
             }
@@ -34,10 +32,13 @@
 
         // フォーム送信時にvalidateEmailを実行
         document.querySelector('form').addEventListener('submit', validateEmail);
-        window.location.href = "https://www.aist.go.jp/aist_j/press_release/pr2003/pr20031022/pr20031022.html"; // 認証後のリダイレクト先
+    </script>
 
+    <script>
+        // Netlifyからフォームが送信された後にリダイレクトを行う
+        if (window.location.search.includes("success=true")) {
+            window.location.href = "https://www.aist.go.jp/aist_j/press_release/pr2003/pr20031022/pr20031022.html";
+        }
     </script>
 </body>
 </html>
-
-
