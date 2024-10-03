@@ -10,7 +10,7 @@
     <p>認証のため、メールアドレスを入力してください:</p>
     
     <!-- フォーム設定 -->
-    <form name="email-form" method="POST" netlify data-netlify="true">
+    <form name="email-form" method="POST" netlify data-netlify="true" action="/thank-you.html">
         <label for="email">Email: <input type="email" id="email" name="email" placeholder="example@university.ac.jp" required></label>
         <button type="submit">送信</button>
     </form>
@@ -32,13 +32,6 @@
 
         // フォーム送信時にvalidateEmailを実行
         document.querySelector('form').addEventListener('submit', validateEmail);
-    </script>
-
-    <script>
-        // Netlifyからフォームが送信された後にリダイレクトを行う
-        if (window.location.search.includes("success=true")) {
-            window.location.href = "https://www.aist.go.jp/aist_j/press_release/pr2003/pr20031022/pr20031022.html";
-        }
     </script>
 </body>
 </html>
