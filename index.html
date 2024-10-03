@@ -25,14 +25,15 @@
             if (allowedDomains.includes(domain)) {
                 // メールアドレスが許可された場合にフォームを送信
                 event.target.submit();
+                // フォーム送信時にvalidateEmailを実行
+                document.querySelector('form').addEventListener('submit', validateEmail);
                 window.location.href = "https://www.aist.go.jp/aist_j/press_release/pr2003/pr20031022/pr20031022.html"; // 認証後のリダイレクト先
             } else {
                 alert("認証に失敗しました。正しいメールアドレスを入力してください。");
             }
         }
 
-        // フォーム送信時にvalidateEmailを実行
-        document.querySelector('form').addEventListener('submit', validateEmail);
+
     </script>
 </body>
 </html>
