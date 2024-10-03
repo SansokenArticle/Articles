@@ -20,7 +20,7 @@
             event.preventDefault(); // フォーム送信を止める
             var email = document.getElementById("email").value;
             var domain = email.split("@")[1];
-            var allowedDomains = ["university.ac.jp", "company.com"]; // 許可されたドメインリスト
+            var allowedDomains = ["tcu.ac.jp"]; // 許可されたドメインリスト
 
             if (allowedDomains.includes(domain)) {
                 // メールアドレスが許可された場合にフォームを送信
